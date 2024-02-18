@@ -1,15 +1,19 @@
 package com.SENG400.BookSpringProject1.domain;
 
 import java.util.List;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+// @JsonIgnore is use so the find all cars doesn't go in an infinite loop 
+//as it looks for the cars then the owner and they the owner has cars so on...
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Owner {
 	@Id
 	 @GeneratedValue(strategy=GenerationType.AUTO)
@@ -24,6 +28,7 @@ public class Owner {
 	 
 	 
 	 @OneToMany(cascade = CascadeType.ALL, mappedBy="owner")
+	 @JsonIgnore
 	 private List<Car> cars;
 	 //Getter and setter
 	 public List<Car> getCars() {
