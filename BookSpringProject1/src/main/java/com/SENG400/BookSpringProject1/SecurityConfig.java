@@ -18,16 +18,15 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.SENG400.BookSpringProject1.service.UserDetailServiceImpl;
+
+import com.SENG400.BookSpringProject1.service.UserDetailsServiceImpl;
 
 
-
-@SuppressWarnings("deprecation")
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
-	private UserDetailServiceImpl userDetailsService;
+	private UserDetailsServiceImpl userDetailsService;
 
 	@Autowired
 	private AuthenticationFilter authenticationFilter;

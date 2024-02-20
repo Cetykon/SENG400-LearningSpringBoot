@@ -13,11 +13,10 @@ public class CarController {
 	//the following @RequestMapping("/cars", method=GET)
 	
 	@Autowired
-	 private CarRepository repository;
-	
+	private CarRepository repository;
+
 	@RequestMapping("/cars")
-	 public Iterable<Car> getCars() {
-		
+	public Iterable<Car> getCars() {
 		return repository.findAll();
-	 }
+	}
 }
